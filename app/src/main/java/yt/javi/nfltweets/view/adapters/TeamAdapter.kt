@@ -20,6 +20,7 @@ class TeamAdapter(private val onClick: (String) -> Unit) : RecyclerView.Adapter<
     override fun getItemCount(): Int = teams.size
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        holder.render(teams[position], onClick)
+        holder.render(teams[position])
+        holder.itemView.setOnClickListener { onClick.invoke(teams[position].twitterAccount) }
     }
 }
