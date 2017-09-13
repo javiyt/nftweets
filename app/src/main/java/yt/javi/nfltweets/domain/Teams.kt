@@ -16,6 +16,7 @@ class Teams {
             Team("Ravens", "Baltimore", AFC, North, ic_baltimore_ravens_logo, "Ravens"),
             Team("Bengals", "Cincinnati", AFC, North, ic_cincinnati_bengals_logo, "Bengals"),
             Team("Browns", "Cleveland", AFC, North, ic_cleveland_browns_logo, "Browns"),
+            Team("Steelers", "Pittsburgh", AFC, North, ic_pittsburgh_steelers_logo, "Steelers"),
             Team("Texans", "Houston", AFC, South, ic_houston_texans_logo, "HoustonTexans"),
             Team("Colts", "Indianapolis", AFC, South, ic_indianapolis_colts_logo, "Colts"),
             Team("Jaguars", "Jacksonville", AFC, South, ic_jacksonville_jaguars_logo, "Jaguars"),
