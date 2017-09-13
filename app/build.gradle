@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "TWITTER_CONSUMER_KEY", '"' + project.twitter_consumer_key + '"'
+        buildConfigField "String", "TWITTER_CONSUMER_SECRET", '"' + project.twitter_consumer_secret + '"'
     }
     buildTypes {
         release {
@@ -28,9 +31,16 @@ dependencies {
     })
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    // Android extra libraries
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:26.0.+'
+
+    // Twitter dependencies
+    compile 'com.twitter.sdk.android:twitter-core:3.1.1'
+    compile 'com.twitter.sdk.android:tweet-ui:3.1.1'
+
+    // Testing
     testCompile 'junit:junit:4.12'
 }
 repositories {
