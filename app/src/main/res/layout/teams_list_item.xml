@@ -4,7 +4,31 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginStart="0dp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:id="@+id/item_header">
+        <TextView
+            android:id="@+id/header_conference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            tools:text="AFC East"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:src="@drawable/horizontal_shadow"/>
+    </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="horizontal"
@@ -16,7 +40,7 @@
             android:id="@+id/team_logo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerInside"
             tools:src="@drawable/ic_miami_dolphins_logo"/>
 
         <TextView
@@ -43,38 +67,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/conference"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/team_conference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            android:textSize="18sp"
-            tools:text="AFC" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/division"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/team_division"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
-            android:textSize="18sp"
-            tools:text="East" />
 
         <TextView
             android:layout_width="wrap_content"
