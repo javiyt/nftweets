@@ -5,35 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginStart="8dp">
+    android:layout_marginLeft="0dp"
+    android:layout_marginStart="0dp">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:id="@+id/item_header">
         <TextView
             android:id="@+id/header_conference"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginStart="4dp"
             android:textSize="24sp"
-            tools:text="AFC" />
+            tools:text="AFC East"
+            android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/header_division"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:textSize="24sp"
-            tools:text="East" />
-
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:src="@drawable/horizontal_shadow"/>
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"

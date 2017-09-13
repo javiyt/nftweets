@@ -9,8 +9,6 @@ import yt.javi.nfltweets.domain.model.Team
 class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val headerConference = view.header_conference
 
-    private val headerDivision = view.header_division
-
     private val teamName = view.team_name
 
     private val teamCity = view.team_city
@@ -20,8 +18,7 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val teamTwitterAccount = view.team_twitter
 
     fun render(team: Team) {
-        headerConference.text = team.conference.name
-        headerDivision.text = team.division.name
+        headerConference.text = "${team.conference.name} ${team.division.name}"
         teamName.text = team.name
         teamCity.text = team.city
         teamLogo.setImageResource(team.logo)
