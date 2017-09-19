@@ -11,8 +11,8 @@ import yt.javi.nfltweets.domain.Teams
 import yt.javi.nfltweets.view.holders.TeamViewHolder
 
 
-class TeamAdapter(private val onClick: (String) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
-    private val teams = Teams().teamsList
+class TeamAdapter(private val conference: String, private val onClick: (String) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
+    private val teams = Teams().teamsList.filter { it.conference.name == conference }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return TeamViewHolder(
