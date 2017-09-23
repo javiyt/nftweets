@@ -13,8 +13,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "TWITTER_CONSUMER_KEY", '"' + project.twitter_consumer_key + '"'
-        buildConfigField "String", "TWITTER_CONSUMER_SECRET", '"' + project.twitter_consumer_secret + '"'
+        def twitter_consumer_key = hasProperty('twitter_consumer_key') ? twitter_consumer_key : System.getenv('TWITTER_CONSUMER_KEY')
+        def twitter_consumer_secret = hasProperty('twitter_consumer_secret') ? twitter_consumer_secret : System.getenv('TWITTER_CONSUMER_SECRET')
+
+        buildConfigField "String", "TWITTER_CONSUMER_KEY", '"' + twitter_consumer_key + '"'
+        buildConfigField "String", "TWITTER_CONSUMER_SECRET", '"' + twitter_consumer_secret + '"'
     }
     buildTypes {
         release {
