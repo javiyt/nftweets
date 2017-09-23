@@ -1,4 +1,4 @@
-# nfltweets
+# nfltweets [![Build Status](https://travis-ci.org/javiyt/nfltweets.svg?branch=master)](https://travis-ci.org/javiyt/nfltweets)
 App to learn kotlin + android
 
 ## How to run it
