@@ -1,7 +1,7 @@
 package yt.javi.nfltweets.domain.model
 
 
-enum class Conferences {
+enum class Conference {
     AFC,
     NFC
 }
