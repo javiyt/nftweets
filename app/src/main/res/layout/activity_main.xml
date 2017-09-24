@@ -6,10 +6,25 @@
     android:layout_height="match_parent"
     tools:context="yt.javi.nfltweets.MainActivity">
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        android:background="?attr/colorPrimary"
+        app:tabIndicatorHeight="12dp"
+        app:tabGravity="fill"
+        app:tabTextColor="#FFF"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="parent"
+        />
+
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
+        />
 
 </android.support.constraint.ConstraintLayout>

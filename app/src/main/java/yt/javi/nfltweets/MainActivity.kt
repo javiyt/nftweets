@@ -1,6 +1,7 @@
 package yt.javi.nfltweets
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.twitter.sdk.android.core.DefaultLogger
@@ -11,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import yt.javi.nfltweets.domain.model.Conferences
 import yt.javi.nfltweets.view.DivisonFragment
 import yt.javi.nfltweets.view.adapters.TeamsPageAdapter
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,9 +36,18 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fragmentAdapter = TeamsPageAdapter(supportFragmentManager)
-        fragmentAdapter.addFragment(DivisonFragment.newInstance(Conferences.AFC))
-        fragmentAdapter.addFragment(DivisonFragment.newInstance(Conferences.NFC))
+        fragmentAdapter.addFragment(
+                DivisonFragment.newInstance(Conferences.AFC),
+                Conferences.AFC.name
+        )
+        fragmentAdapter.addFragment(
+                DivisonFragment.newInstance(Conferences.NFC),
+                Conferences.NFC.name
+        )
 
         this.pager.adapter = fragmentAdapter
+
+        val tabLayout = findViewById(R.id.tabs) as TabLayout
+        tabLayout.setupWithViewPager(this.pager)
     }
 }
