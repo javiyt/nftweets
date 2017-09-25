@@ -3,7 +3,7 @@ package yt.javi.nfltweets.view.holders
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.teams_list_item.view.*
-import yt.javi.nfltweets.domain.model.Team
+import yt.javi.nfltweets.domain.model.team.Team
 
 
 class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {

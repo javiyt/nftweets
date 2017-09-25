@@ -1,13 +1,13 @@
-package yt.javi.nfltweets.domain
+package yt.javi.nfltweets.domain.infrastructure.repositories.inmemory
 
 import yt.javi.nfltweets.R.drawable.*
-import yt.javi.nfltweets.domain.model.Conferences.AFC
-import yt.javi.nfltweets.domain.model.Conferences.NFC
-import yt.javi.nfltweets.domain.model.Divisions.*
-import yt.javi.nfltweets.domain.model.Team
+import yt.javi.nfltweets.domain.model.Conference.AFC
+import yt.javi.nfltweets.domain.model.Conference.NFC
+import yt.javi.nfltweets.domain.model.Division.*
+import yt.javi.nfltweets.domain.model.team.Team
 
 
-class Teams {
+object TeamsDataBase {
     val teamsList = listOf(
             Team("Bills", "Buffalo", AFC, East, ic_buffalo_bills_logo, "buffalobills"),
             Team("Dolphins", "Miami", AFC, East, ic_miami_dolphins_logo, "MiamiDolphins"),
