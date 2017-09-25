@@ -10,21 +10,27 @@ import android.view.View
 import android.view.ViewGroup
 import yt.javi.nfltweets.R
 import yt.javi.nfltweets.TwitterTimeLineActivity
-import yt.javi.nfltweets.domain.model.Conferences
+import yt.javi.nfltweets.domain.model.Conference
+import yt.javi.nfltweets.domain.model.Conference.valueOf
+import yt.javi.nfltweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nfltweets.view.adapters.TeamAdapter
 
 
 class DivisonFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
+    lateinit var getTeamsByConferenceService: GetTeamsByConferenceService
+
     companion object {
         private val CONFERENCES = "conferences"
 
-        fun newInstance(conferences: Conferences): DivisonFragment {
+        fun newInstance(getTeamsByConferenceService: GetTeamsByConferenceService, conference: Conference): DivisonFragment {
             val divisonFragment = DivisonFragment()
 
+            divisonFragment.getTeamsByConferenceService = getTeamsByConferenceService
+
             val bundle = Bundle()
-            bundle.putString(CONFERENCES, conferences.name)
+            bundle.putString(CONFERENCES, conference.name)
             divisonFragment.arguments =  bundle
 
             return divisonFragment
@@ -43,7 +49,8 @@ class DivisonFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val teamAdapter = TeamAdapter(
-                arguments.getString(CONFERENCES),
+                getTeamsByConferenceService,
+                valueOf(arguments.getString(CONFERENCES)),
                 onGoToTimelineClickListener()
         )
         teamAdapter.setHasStableIds(true)

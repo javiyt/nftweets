@@ -9,11 +9,12 @@ import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
 import kotlinx.android.synthetic.main.activity_main.*
-import yt.javi.nfltweets.domain.model.Conferences
+import yt.javi.nfltweets.domain.infrastructure.repositories.inmemory.TeamInMemoryRepository
+import yt.javi.nfltweets.domain.infrastructure.repositories.inmemory.TeamsDataBase
+import yt.javi.nfltweets.domain.model.Conference
+import yt.javi.nfltweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nfltweets.view.DivisonFragment
 import yt.javi.nfltweets.view.adapters.TeamsPageAdapter
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,13 +37,25 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fragmentAdapter = TeamsPageAdapter(supportFragmentManager)
-        fragmentAdapter.addFragment(
-                DivisonFragment.newInstance(Conferences.AFC),
-                Conferences.AFC.name
+
+        val getTeamsByConferenceService = GetTeamsByConferenceService(
+                TeamInMemoryRepository(
+                        TeamsDataBase.teamsList
+                )
         )
         fragmentAdapter.addFragment(
-                DivisonFragment.newInstance(Conferences.NFC),
-                Conferences.NFC.name
+                DivisonFragment.newInstance(
+                        getTeamsByConferenceService,
+                        Conference.AFC
+                ),
+                Conference.AFC.name
+        )
+        fragmentAdapter.addFragment(
+                DivisonFragment.newInstance(
+                        getTeamsByConferenceService,
+                        Conference.NFC
+                ),
+                Conference.NFC.name
         )
 
         this.pager.adapter = fragmentAdapter

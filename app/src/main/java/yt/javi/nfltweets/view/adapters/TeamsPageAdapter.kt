@@ -14,7 +14,7 @@ class TeamsPageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     override fun getCount(): Int = fragments.size
 
-    fun addFragment(fragment: Fragment, title: String): Unit {
+    fun addFragment(fragment: Fragment, title: String) {
         fragments.add(fragment)
         fragmentsTitle.add(title)
     }
