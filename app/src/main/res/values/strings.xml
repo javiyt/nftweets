@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NFL tweets</string>
+    <string name="app_name">NFTweets</string>
     <string name="conference">Conference</string>
     <string name="division">Division</string>
     <string name="twitter_account">\@</string>
