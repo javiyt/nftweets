@@ -1,6 +1,7 @@
 package yt.javi.nfltweets
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.twitter.sdk.android.core.DefaultLogger
@@ -36,20 +37,30 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fragmentAdapter = TeamsPageAdapter(supportFragmentManager)
+
         val getTeamsByConferenceService = GetTeamsByConferenceService(
                 TeamInMemoryRepository(
                         TeamsDataBase.teamsList
                 )
         )
-        fragmentAdapter.addFragment(DivisonFragment.newInstance(
-                getTeamsByConferenceService,
-                Conference.AFC
-        ))
-        fragmentAdapter.addFragment(DivisonFragment.newInstance(
-                getTeamsByConferenceService,
-                Conference.NFC
-        ))
+        fragmentAdapter.addFragment(
+                DivisonFragment.newInstance(
+                        getTeamsByConferenceService,
+                        Conference.AFC
+                ),
+                Conference.AFC.name
+        )
+        fragmentAdapter.addFragment(
+                DivisonFragment.newInstance(
+                        getTeamsByConferenceService,
+                        Conference.NFC
+                ),
+                Conference.NFC.name
+        )
 
         this.pager.adapter = fragmentAdapter
+
+        val tabLayout = findViewById(R.id.tabs) as TabLayout
+        tabLayout.setupWithViewPager(this.pager)
     }
 }
