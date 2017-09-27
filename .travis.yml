@@ -10,17 +10,17 @@ android:
   - extra-android-m2repository
   - addon-google_apis-google-25
 licenses:
-    - 'android-sdk-license-.+'
-    - '.+'
+- android-sdk-license-.+
+- .+
 before_install:
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
 script:
-  - ./gradlew build
+- ./gradlew build
 env:
   global:
-  - secure: AO1qKLrdC9tSkjAO69EACvUoP+q18CCmSrUVEP9zSnHeRfcPMbgYly6MAHVPbc+wrx1t+M5Kzru0gEmOwuSwdflMVqOXAul5w7sHaO+239p84wx0OkjKNQaK3pnfFEVVJHWHGty+R1d+2srMwf2rDqVDu1dsUAinv8Sm/vTL0zz3N5KvNVV6t9VjeAc+NJJWVhsVzlNdJt6hkcm2ldzAdkUri/GVTZJwPklC91vDfxxcbG7Ylq3beFL19VXbMp9O6hG2XwcfGlAwko7thEikkmUFlRn2T4ngV+TsK6Fi2siCO946sMyf/WFqRQyxIeXpi/X/ZDFmNnv6Fei/2RQHCtZ+U1fxanvUKbtp0fAlyJ9tDk6HY2lp/QTE6KDFxvlHBT6EOIqq2o2LplegLy4GJMN9rpo/OtmavwqPg8DmeT+z1zfZzAz91LdjjaHJYtMMlkJ9wR8xMnyWB4dZIkt8RpjBZxVZNPqGh6f7ihRE37bBsV22OX2EP2NCY8jIwBDwPjutUBZbgT1HEb4dGutZJKQ2+TUHDVmKHQPjAqVB5ssMd+5WcCQOFqr50vYYy545i+/xvwuFOPvdNuTq2kNpqvaXb0mzW/vq0OHHuTlWTAvkCZE1Ms3kBzxcJVG0AqzIZ0J/ozoG2d9srd3T42Y902eUbuVwqpTrK6MFUSCuTh0=
-  - secure: rvwUseA1GbJwLvurBtu6Nhi6GE2CxxtDMaHePM0rKaUDXrtQLtFHROkpkK0ah0776LEP6f2Ju4wb/yaCx09yaifKYEbYTAZ5RSNFvbA5CfXgKTzNYHOdUlaQIen/ShZrHpqshEArr+4A6CTAG9yx4pJdRKkfJE2VMafMlHhPKxKc7iGdAjqIWPINcqoUJsBZxqyqFUPg8SXldiBEs3jf+202r7UkwpSw6H2XcgvwFL9314BUvdmxmD+jEkjYIDwDQV5dbhV9y6tvxNhXgevx1xnd5pR9qofk8A/GMdrARUCD4NNdcrY0IFILALAr81AklFAINI/6jYAlJrHqSsEMaXPN51aPCHdKmu4/AC9us7mfX7F8dhxDHTVzxw1q+Gfy3ZN8SZtmaWAzAX6+0wtaNY8EItD5dPSF0fm9UV54zY/PfMKcb16nhzUiuEUnA0J54GXeDw3LZF6mB7hEvf9gZBOUMXSmu540oUXfGQ0+dghy1l5apS7Pj25rKpBeiDkPlUlIu8oB0t38gnebTw2PPpsKf+eDUlSJkAq8Pj9UMOt91av6IT/EKVemp8zYLRE6M/wSwG1XB/ofv47a88uPkjp+BE6pBaqS5uVnlWeMpaA8mQzqSxtwQ9rN16W7xIuUelED0wlTfHc4p2kxGOnKwiPTzCu7XWKlwHOyUBGSBB8=
+  - secure: VJlKHojVBdIousaaGg15uxR/M2Ot83Xnf/vaQSXjVHW8akwV4cTKG2EXwdliLvrFVBY6VpI/fTmz2flYfVlsDKKbeblz8SJGud2bdK/IEhNzHrbsdRsHPb2ciTg8FPM/VQkfIRIcXtxr32oBOOoJknhfAxbbS/kzAPtg4M/YtwgJTeGskGIfkCZ2w0fksWqNByZnBanok/TFIUdh3jf5SN8LGfKCmmzD4hE/q+7/rNbMulO0ZONVkWHmuyO51EJ8ZI/NjTfxhGjKUHfbI92RwWmTQrIuR1h1n8PGG71gQPlR+ey0FNuDUopXfdqMeUu5r8jr03OGgsQBBTeJd+d9x9T8kAqdJWhH+c0fW/gpESshLpBRHZ/F6X3x5M0CMQh3A5ZTHlM6ZWjBta5JjLNkRr8CH1Q0oeiQ5EtOgUi5LZfTh5SHTnO5UcghbM+WCMahZXYODUAweANaazd03uCiNXH17PkjkYcZZosLH6QDFTAHdTqbilOcKXe+N3WIdptYhPzCh89Rtt0mGswELpNBAxmq8qXveY9RRztSq1R6ADW1o7apr4H7bDp/nJgNa37YuB9U6ZiCBPB83lvc/jUR5Nj5FWyV0/Zeawq7fXRRAoG6jbotnyfcec9doifFQ7lxliDCjMSR8xO9DouTA8KUfGloDsjcjIkyAcvNz9fpTBU=
+  - secure: T2sXhmIhBa4amaQ/eShwhDyKM6dplgXoRPIK4r6qdtDnQwYmVbhBWzxBWbHD4sVD/afijMES3mWamSjQiba64/hH8w/qEPvq+MxDcR/sMNx60xYmZSDikAKKFdV+2vxh/t88XhVsDTYtjRL0W3nsVwUONGuZSOvwffBOFLVLohdHC2YEqEdxC8u9U/x/843ErMHALOQXBPij7Ba+JCIUPL3JtqX6alWKXlgIQC+p2Po1N+XHqmUB7URMpF8H29QZ4nUgdyqiYS+2njYVxM//wGGx95znkTGE/bK7M7PhYJuw5lTlwU7xS5YtUw4lDCdUNIj7YCwwlImGq0VJu3fZkPFOxCAGpnW7Q2+9hSXjsOk8GVaxFz67b2WVXY9owUBLvmVh7pPz+yBhc7CW7U5Wm/UHMOZ41Twng9W8GOFWgw4Oow5Q1KMgDwSnhzhoL7uQjuXS6rG6Sa2ujvgrGJ3/RzYfY6nKNx4OJAGvsOMp+wGL6NwqPsl79Q7LnhUyiEJYcrVV6GsSzJOukhxNldlCLlJpT+GcNPkytHKQlRXU/2KroW/3h5hwy+a4C0Ps1daVkYkdzzWnsRbTcDnHNALpSgpOuHqxiuyP+nBO8BLJLf+/qIQ61+BO1/nN/+ReaThDi7PuTvbR/zBEA3wT4sZ0rxVxBDCtjyRNiEXyIWVpvyI=
