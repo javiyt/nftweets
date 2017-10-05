@@ -7,7 +7,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "yt.javi.nfltweets"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -15,6 +15,7 @@ android {
 
         buildConfigField "String", "TWITTER_CONSUMER_KEY", '"' + project.twitter_consumer_key + '"'
         buildConfigField "String", "TWITTER_CONSUMER_SECRET", '"' + project.twitter_consumer_secret + '"'
+        buildConfigField "String", "NEWS_API_URL", '"' + project.news_api_url + '"'
     }
     buildTypes {
         release {
@@ -34,12 +35,23 @@ dependencies {
     // Android extra libraries
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
+    compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:26.0.+'
 
     // Twitter dependencies
     compile 'com.twitter.sdk.android:twitter-core:3.1.1'
     compile 'com.twitter.sdk.android:tweet-ui:3.1.1'
+
+    // Klaxon
+    compile 'com.beust:klaxon:0.30'
+
+    // Anko Commons
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+
+    // Coroutine listeners for Anko Layouts
+    compile "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    compile "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
 
     // Testing
     testCompile 'junit:junit:4.12'

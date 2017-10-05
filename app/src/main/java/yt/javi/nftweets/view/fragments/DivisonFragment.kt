@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view
+package yt.javi.nftweets.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -67,6 +67,5 @@ class DivisonFragment : Fragment() {
             startActivity(intent)
         }
     }
-
 }
 

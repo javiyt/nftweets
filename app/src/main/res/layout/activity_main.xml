@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="yt.javi.nftweets.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="yt.javi.nftweets.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -14,23 +14,19 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/AppTheme.Toolbar" />
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager"
+    <FrameLayout
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/primaryLightColor"
-            app:tabIndicatorHeight="6dp"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/white" />
-
-    </android.support.v4.view.ViewPager>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/primaryLightColor"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/main_navigation_menu" />
 
 </LinearLayout>
