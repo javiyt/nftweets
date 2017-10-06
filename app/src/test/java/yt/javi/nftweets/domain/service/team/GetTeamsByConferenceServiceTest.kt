@@ -7,8 +7,8 @@ import org.mockito.BDDMockito.given
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
+import yt.javi.nfltweets.domain.model.team.Team
 import yt.javi.nftweets.domain.model.Conference
-import yt.javi.nftweets.domain.model.team.Team
 import yt.javi.nftweets.domain.model.team.TeamRepository
 import java.util.Collections.singletonList
 

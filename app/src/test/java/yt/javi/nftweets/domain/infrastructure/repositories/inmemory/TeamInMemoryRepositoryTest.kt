@@ -2,11 +2,12 @@ package yt.javi.nftweets.domain.infrastructure.repositories.inmemory
 
 import org.junit.Before
 import org.junit.Test
+import yt.javi.nfltweets.domain.model.team.Team
 import yt.javi.nftweets.R.drawable.*
 import yt.javi.nftweets.domain.model.Conference.AFC
 import yt.javi.nftweets.domain.model.Conference.NFC
 import yt.javi.nftweets.domain.model.Division.*
-import yt.javi.nftweets.domain.model.team.Team
+
 
 class TeamInMemoryRepositoryTest {
     companion object {
