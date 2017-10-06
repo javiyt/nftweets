@@ -9,5 +9,7 @@ data class Team(
         val city: String,
         val conference: Conference,
         val division: Division,
-        val logo: Int, val twitterAccount: String
+        val logo: Int,
+        val twitterAccount: String,
+        val twitterHashTag: String
 )

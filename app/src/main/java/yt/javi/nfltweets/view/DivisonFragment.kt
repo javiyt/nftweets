@@ -59,10 +59,11 @@ class DivisonFragment : Fragment() {
         recyclerView.adapter = teamAdapter
     }
 
-    private fun onGoToTimelineClickListener(): (String) -> Unit {
-        return fun(twitterAccount: String) {
+    private fun onGoToTimelineClickListener(): (String, TwitterTimeLineActivity.TimelineType) -> Unit {
+        return fun(twitterAccount: String, timelineType: TwitterTimeLineActivity.TimelineType) {
             val intent = Intent(activity, TwitterTimeLineActivity::class.java)
             intent.putExtra(TwitterTimeLineActivity.EXTRA_TWITTER_ACCOUNT, twitterAccount)
+            intent.putExtra(TwitterTimeLineActivity.EXTRA_TWITTER_TIMELINE_TYPE, timelineType.name)
             startActivity(intent)
         }
     }

@@ -3,4 +3,5 @@
     <string name="conference">Conference</string>
     <string name="division">Division</string>
     <string name="twitter_account">\@</string>
+    <string name="twitter_hashtag">#</string>
 </resources>

@@ -17,11 +17,14 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val teamTwitterAccount = view.team_twitter
 
+    private val teamtTwitterHashtag = view.team_hashtag
+
     fun render(team: Team) {
         headerConference.text = "${team.conference.name} ${team.division.name}"
         teamName.text = team.name
         teamCity.text = team.city
         teamLogo.setImageResource(team.logo)
         teamTwitterAccount.text = team.twitterAccount
+        teamtTwitterHashtag.text = team.twitterHashTag
     }
 }

@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.teams_list_item.view.*
 import yt.javi.nfltweets.R
+import yt.javi.nfltweets.TwitterTimeLineActivity
 import yt.javi.nfltweets.domain.model.Conference
 import yt.javi.nfltweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nfltweets.view.holders.TeamViewHolder
 
 
-class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceService, private val conference: Conference, private val onClick: (String) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
+class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceService, private val conference: Conference, private val onClick: (String, TwitterTimeLineActivity.TimelineType) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return TeamViewHolder(
@@ -26,7 +27,14 @@ class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceS
                 if (position == 0 || teams[position].division != teams[position - 1].division) View.VISIBLE else View.GONE
 
         (holder as TeamViewHolder).render(teams[position])
-        holder.itemView.setOnClickListener { onClick.invoke(teams[position].twitterAccount) }
+        holder.itemView.team_twitter.setOnClickListener { onClick.invoke(
+                teams[position].twitterAccount,
+                TwitterTimeLineActivity.TimelineType.USER
+        ) }
+        holder.itemView.team_hashtag.setOnClickListener { onClick.invoke(
+                teams[position].twitterHashTag,
+                TwitterTimeLineActivity.TimelineType.SEARCH
+        ) }
     }
 
     override fun getItemCount(): Int = getTeamsByConferenceService.getTeamsByConference(conference).size
