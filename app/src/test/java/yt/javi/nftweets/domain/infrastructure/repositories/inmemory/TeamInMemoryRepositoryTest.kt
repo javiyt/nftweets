@@ -12,14 +12,14 @@ import yt.javi.nftweets.domain.model.Division.*
 class TeamInMemoryRepositoryTest {
     companion object {
         val teamsList = listOf(
-                Team("Bills", "Buffalo", AFC, East, ic_buffalo_bills_logo, "buffalobills"),
-                Team("Ravens", "Baltimore", AFC, North, ic_baltimore_ravens_logo, "Ravens"),
-                Team("Texans", "Houston", AFC, South, ic_houston_texans_logo, "HoustonTexans"),
-                Team("Broncos", "Denver", AFC, West, ic_denver_broncos_logo, "Broncos"),
-                Team("Cowboys", "Dallas", NFC, East, ic_dallas_cowboys, "dallascowboys"),
-                Team("Bears", "Chicago", NFC, North, ic_chicago_bears_logo, "ChicagoBears"),
-                Team("Falcons", "Atlanta", NFC, South, ic_atlanta_falcons_logo, "AtlantaFalcons"),
-                Team("Cardinals", "Arizona", NFC, West, ic_arizona_cardinals_logo, "AZCardinals")
+                Team("Bills", "Buffalo", AFC, East, ic_buffalo_bills_logo, "buffalobills", "GoBills"),
+                Team("Ravens", "Baltimore", AFC, North, ic_baltimore_ravens_logo, "Ravens", "RavensFlock"),
+                Team("Texans", "Houston", AFC, South, ic_houston_texans_logo, "HoustonTexans", "WeAreTexans"),
+                Team("Broncos", "Denver", AFC, West, ic_denver_broncos_logo, "Broncos", "Broncos"),
+                Team("Cowboys", "Dallas", NFC, East, ic_dallas_cowboys, "dallascowboys", "DallasCowboys"),
+                Team("Bears", "Chicago", NFC, North, ic_chicago_bears_logo, "ChicagoBears", "FeedDaBears"),
+                Team("Falcons", "Atlanta", NFC, South, ic_atlanta_falcons_logo, "AtlantaFalcons", "RiseUp"),
+                Team("Cardinals", "Arizona", NFC, West, ic_arizona_cardinals_logo, "AZCardinals", "BeRedSeeRed")
         )    }
 
     private lateinit var teamRepository: TeamInMemoryRepository
