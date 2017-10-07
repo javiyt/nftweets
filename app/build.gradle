@@ -15,7 +15,7 @@ android {
 
         buildConfigField "String", "TWITTER_CONSUMER_KEY", '"' + project.twitter_consumer_key + '"'
         buildConfigField "String", "TWITTER_CONSUMER_SECRET", '"' + project.twitter_consumer_secret + '"'
-        buildConfigField "String", "NEWS_API_URL", '"' + project.news_api_url + '"'
+        buildConfigField "String", "NEWS_API_URL", '"https://newsapi.org/v1/articles?source=nfl-news&sortBy=latest&apiKey=' + project.news_api_key + '"'
     }
     buildTypes {
         release {
