@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                                 URL(BuildConfig.NEWS_API_URL)
                         )
                 )
+
             }
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.main_view, selectedFragment)

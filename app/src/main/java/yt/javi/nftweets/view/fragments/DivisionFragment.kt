@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.fragments
+package yt.javi.nftweets.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,7 +16,7 @@ import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nftweets.view.adapters.TeamAdapter
 
 
-class DivisonFragment : Fragment() {
+class DivisionFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     lateinit var getTeamsByConferenceService: GetTeamsByConferenceService
@@ -24,16 +24,16 @@ class DivisonFragment : Fragment() {
     companion object {
         private val CONFERENCES = "conferences"
 
-        fun newInstance(getTeamsByConferenceService: GetTeamsByConferenceService, conference: Conference): DivisonFragment {
-            val divisonFragment = DivisonFragment()
+        fun newInstance(getTeamsByConferenceService: GetTeamsByConferenceService, conference: Conference): DivisionFragment {
+            val divisionFragment = DivisionFragment()
 
-            divisonFragment.getTeamsByConferenceService = getTeamsByConferenceService
+            divisionFragment.getTeamsByConferenceService = getTeamsByConferenceService
 
             val bundle = Bundle()
             bundle.putString(CONFERENCES, conference.name)
-            divisonFragment.arguments =  bundle
+            divisionFragment.arguments =  bundle
 
-            return divisonFragment
+            return divisionFragment
         }
     }
 
@@ -59,13 +59,15 @@ class DivisonFragment : Fragment() {
         recyclerView.adapter = teamAdapter
     }
 
-    private fun onGoToTimelineClickListener(): (String, String) -> Unit {
-        return fun(twitterAccount: String, teamName: String) {
+    private fun onGoToTimelineClickListener(): (String, String, TwitterTimeLineActivity.TimelineType) -> Unit {
+        return fun(twitterAccount: String, teamName: String, timelineType: TwitterTimeLineActivity.TimelineType) {
             val intent = Intent(activity, TwitterTimeLineActivity::class.java)
             intent.putExtra(TwitterTimeLineActivity.EXTRA_TWITTER_ACCOUNT, twitterAccount)
             intent.putExtra(TwitterTimeLineActivity.EXTRA_TEAM_NAME, teamName)
+            intent.putExtra(TwitterTimeLineActivity.EXTRA_TWITTER_TIMELINE_TYPE, timelineType.name)
+
             startActivity(intent)
         }
     }
-}
 
+}

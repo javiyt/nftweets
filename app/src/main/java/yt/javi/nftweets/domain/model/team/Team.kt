@@ -1,8 +1,7 @@
-package yt.javi.nftweets.domain.model.team
+package yt.javi.nfltweets.domain.model.team
 
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.model.Division
-
 
 data class Team(
         val name: String,
@@ -10,5 +9,6 @@ data class Team(
         val conference: Conference,
         val division: Division,
         val logo: Int,
-        val twitterAccount: String
+        val twitterAccount: String,
+        val twitterHashTag: String
 )

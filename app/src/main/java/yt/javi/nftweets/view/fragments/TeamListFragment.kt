@@ -13,6 +13,7 @@ import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamInMemory
 import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamsDataBase
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
+import yt.javi.nftweets.view.DivisionFragment
 import yt.javi.nftweets.view.adapters.TeamsPageAdapter
 
 
@@ -29,14 +30,14 @@ class TeamListFragment : Fragment() {
                 )
         )
         fragmentAdapter.addFragment(
-                DivisonFragment.newInstance(
+                DivisionFragment.newInstance(
                         getTeamsByConferenceService,
                         Conference.AFC
                 ),
                 Conference.AFC.name
         )
         fragmentAdapter.addFragment(
-                DivisonFragment.newInstance(
+                DivisionFragment.newInstance(
                         getTeamsByConferenceService,
                         Conference.NFC
                 ),
