@@ -1,4 +1,4 @@
-# NFTweets [![Build Status](https://travis-ci.org/javiyt/nfltweets.svg?branch=master)](https://travis-ci.org/javiyt/nfltweets)
+# NFTweets [![Build Status](https://travis-ci.org/javiyt/nftweets.svg?branch=master)](https://travis-ci.org/javiyt/nftweets)
 App to learn kotlin + android
 
 ## How to run it
@@ -15,4 +15,6 @@ ORG_GRADLE_PROJECT_twitter_consumer_secret=XXXXXXXXXXXXXXXXXXXXXX
 ORG_GRADLE_PROJECT_news_api_key=XXXXXXXXXX
 ```
 
+=======
 News powered by https://newsapi.org/
+
