@@ -3,4 +3,6 @@
     <string name="conference">Conference</string>
     <string name="division">Division</string>
     <string name="twitter_account">\@</string>
+    <string name="item_1">Teams</string>
+    <string name="item_2">News</string>
 </resources>
