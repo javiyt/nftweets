@@ -71,4 +71,3 @@ class DivisionFragment : Fragment() {
     }
 
 }
-
