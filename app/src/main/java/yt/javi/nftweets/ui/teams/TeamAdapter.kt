@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.adapters
+package yt.javi.nftweets.ui.teams
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.teams_list_item.view.*
 import yt.javi.nftweets.R
-import yt.javi.nftweets.TwitterTimeLineActivity
+import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
-import yt.javi.nftweets.view.holders.TeamViewHolder
 import yt.javi.nftweets.domain.model.Conference
 
 

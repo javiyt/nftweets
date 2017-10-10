@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view
+package yt.javi.nftweets.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import yt.javi.nftweets.R
-import yt.javi.nftweets.TwitterTimeLineActivity
+import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.model.Conference.valueOf
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
-import yt.javi.nftweets.view.adapters.TeamAdapter
+import yt.javi.nftweets.ui.teams.TeamAdapter
 
 
 class DivisionFragment : Fragment() {
