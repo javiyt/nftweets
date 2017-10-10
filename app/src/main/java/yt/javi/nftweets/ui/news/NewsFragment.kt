@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.fragments
+package yt.javi.nftweets.ui.news
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,7 +11,6 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import yt.javi.nftweets.R
 import yt.javi.nftweets.domain.service.news.GetLatestNewsService
-import yt.javi.nftweets.view.adapters.ArticleAdapter
 
 
 class NewsFragment() : Fragment() {

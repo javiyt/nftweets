@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="yt.javi.nftweets.MainActivity"
+            android:name="yt.javi.nftweets.ui.main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="yt.javi.nftweets.TwitterTimeLineActivity"
+            android:name="yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity"
             android:screenOrientation="portrait" />
     </application>
 

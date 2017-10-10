@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.fragments
+package yt.javi.nftweets.ui.fragments
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -13,8 +13,8 @@ import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamInMemory
 import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamsDataBase
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
-import yt.javi.nftweets.view.DivisionFragment
-import yt.javi.nftweets.view.adapters.TeamsPageAdapter
+import yt.javi.nftweets.ui.DivisionFragment
+import yt.javi.nftweets.ui.teams.TeamsPageAdapter
 
 
 class TeamListFragment : Fragment() {

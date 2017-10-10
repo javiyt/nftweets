@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.holders
+package yt.javi.nftweets.ui.teams
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

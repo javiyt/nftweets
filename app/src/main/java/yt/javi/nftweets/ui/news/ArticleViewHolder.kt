@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.holders
+package yt.javi.nftweets.ui.news
 
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils

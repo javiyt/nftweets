@@ -1,4 +1,4 @@
-package yt.javi.nftweets
+package yt.javi.nftweets.ui.main
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,11 +10,13 @@ import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
 import kotlinx.android.synthetic.main.activity_main.*
+import yt.javi.nftweets.BuildConfig
+import yt.javi.nftweets.R
 import yt.javi.nftweets.domain.infrastructure.repositories.http.ArticleHttpRepository
 import yt.javi.nftweets.domain.infrastructure.repositories.http.HttpReader
 import yt.javi.nftweets.domain.service.news.GetLatestNewsService
-import yt.javi.nftweets.view.fragments.NewsFragment
-import yt.javi.nftweets.view.fragments.TeamListFragment
+import yt.javi.nftweets.ui.news.NewsFragment
+import yt.javi.nftweets.ui.fragments.TeamListFragment
 import java.net.URL
 
 

@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.adapters
+package yt.javi.nftweets.ui.news
 
 import android.support.v7.widget.RecyclerView.Adapter
 import android.support.v7.widget.RecyclerView.ViewHolder
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import yt.javi.nftweets.R
 import yt.javi.nftweets.domain.model.news.Article
-import yt.javi.nftweets.view.holders.ArticleViewHolder
 
 
 class ArticleAdapter(private val articles: List<Article>) : Adapter<ViewHolder>() {

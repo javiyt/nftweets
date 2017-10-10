@@ -1,4 +1,4 @@
-package yt.javi.nftweets.view.adapters
+package yt.javi.nftweets.ui.teams
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

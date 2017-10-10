@@ -1,4 +1,4 @@
-package yt.javi.nftweets
+package yt.javi.nftweets.ui.twitter
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +9,7 @@ import com.twitter.sdk.android.tweetui.Timeline
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
 import com.twitter.sdk.android.tweetui.UserTimeline
 import kotlinx.android.synthetic.main.activity_twitter_time_line.*
+import yt.javi.nftweets.R
 
 
 class TwitterTimeLineActivity : AppCompatActivity() {
