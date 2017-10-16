@@ -1,4 +1,4 @@
-package yt.javi.nftweets.domain.infrastructure.repositories.inmemory
+package yt.javi.nftweets.infrastructure.repositories.inmemory
 
 import org.junit.Before
 import org.junit.Test
