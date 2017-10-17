@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.teams_list_item.view.*
 import yt.javi.nftweets.R
-import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
-import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nftweets.domain.model.Conference
+import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
+import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
 
 
 class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceService, private val conference: Conference, private val onClick: (String, String, TwitterTimeLineActivity.TimelineType) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
@@ -43,6 +43,4 @@ class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceS
     }
 
     override fun getItemCount(): Int = getTeamsByConferenceService.getTeamsByConference(conference).size
-
-    override fun getItemId(position: Int): Long = position.toLong()
 }

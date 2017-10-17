@@ -28,6 +28,6 @@ class ArticleHttpRepository(private val parser: Parser, private val httpReader: 
                             Timestamp(formatter.parse(it.string("publishedAt")).time)
                     )
                 }
+                .sortedByDescending { it.publishedAt }
     }
-
 }

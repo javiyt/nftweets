@@ -35,7 +35,6 @@ class NewsFragment() : Fragment() {
             val news = getLatestNewsService.getLatestNews()
             uiThread {
                 val articleAdapter = ArticleAdapter(news)
-                articleAdapter.setHasStableIds(true)
 
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = articleAdapter
