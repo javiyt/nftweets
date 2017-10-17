@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         init {
             System.loadLibrary("keys")
         }
+        val ALGORITHM = "AES"
     }
 
     private external fun getCryptedTwitterKey(): String
@@ -36,16 +37,14 @@ class MainActivity : AppCompatActivity() {
 
     private external fun getCryptedNewsApiKey(): String
 
+    private external fun getEncryptionKey(): String
+
     private fun getDecryptedString(encryptedText: String): String {
-        val key = SecretKeySpec(BuildConfig.ENCRYPTION_KEY.toByteArray(), "AES")
-        val cipher = Cipher.getInstance("AES")
+        val key = SecretKeySpec(Base64.decode(getEncryptionKey().toByteArray(), Base64.DEFAULT), ALGORITHM)
+        val cipher = Cipher.getInstance(ALGORITHM)
         cipher.init(Cipher.DECRYPT_MODE, key)
 
-        return String(
-                cipher.doFinal(
-                        Base64.decode(encryptedText, Base64.DEFAULT)
-                )
-        )
+        return String(cipher.doFinal(Base64.decode(encryptedText, Base64.DEFAULT)))
     }
 
     private fun getTwitterKey(): String =

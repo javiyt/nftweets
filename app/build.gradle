@@ -14,7 +14,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "NEWS_API_URL", '"https://newsapi.org/v1/articles?source=nfl-news&sortBy=latest&apiKey="'
-        buildConfigField "String", "ENCRYPTION_KEY", '"' + project.ENCRYPTION_KEY + '"'
+        externalNativeBuild {
+            ndkBuild {
+                cFlags "-DTWITTER_CONSUMER_KEY=" + project.TWITTER_CONSUMER_KEY_CRYPTED, "-DTWITTER_CONSUMER_SECRET=" + project.TWITTER_CONSUMER_SECRET_CRYPTED, "-DNEWS_API_KEY=" + project.NEWS_API_KEY_CRYPTED, "-DENCRYPTION_KEY=" + project.ENCRYPTION_KEY
+            }
+        }
     }
     buildTypes {
         release {
