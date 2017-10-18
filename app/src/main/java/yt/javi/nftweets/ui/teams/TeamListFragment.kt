@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.team_list_fragment.*
 import kotlinx.android.synthetic.main.team_list_fragment.view.*
 import yt.javi.nftweets.R
-import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamInMemoryRepository
-import yt.javi.nftweets.domain.infrastructure.repositories.inmemory.TeamsDataBase
+import yt.javi.nftweets.infrastructure.repositories.inmemory.TeamInMemoryRepository
+import yt.javi.nftweets.infrastructure.repositories.inmemory.TeamsDataBase
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nftweets.ui.DivisionFragment

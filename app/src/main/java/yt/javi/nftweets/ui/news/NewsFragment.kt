@@ -6,11 +6,15 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.news_list_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import yt.javi.nftweets.R
 import yt.javi.nftweets.domain.service.news.GetLatestNewsService
+import java.lang.Thread.sleep
 
 
 class NewsFragment() : Fragment() {
@@ -38,6 +42,10 @@ class NewsFragment() : Fragment() {
 
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = articleAdapter
+
+                sleep(500)
+                news_progressbar.visibility = GONE
+                recyclerView.visibility = VISIBLE
             }
         }
     }

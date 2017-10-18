@@ -1,4 +1,4 @@
-package yt.javi.nftweets.domain.infrastructure.repositories.http
+package yt.javi.nftweets.infrastructure.repositories.http
 
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
