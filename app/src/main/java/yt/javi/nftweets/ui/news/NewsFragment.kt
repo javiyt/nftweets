@@ -1,6 +1,8 @@
 package yt.javi.nftweets.ui.news
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock.sleep
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -14,7 +16,8 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import yt.javi.nftweets.R
 import yt.javi.nftweets.domain.service.news.GetLatestNewsService
-import java.lang.Thread.sleep
+import yt.javi.nftweets.ui.article.ArticleActivity
+import java.net.URL
 
 
 class NewsFragment() : Fragment() {
@@ -38,7 +41,7 @@ class NewsFragment() : Fragment() {
         doAsync {
             val news = getLatestNewsService.getLatestNews()
             uiThread {
-                val articleAdapter = ArticleAdapter(news)
+                val articleAdapter = ArticleAdapter(news, onClickArticleTitle())
 
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = articleAdapter
@@ -47,6 +50,15 @@ class NewsFragment() : Fragment() {
                 news_progressbar.visibility = GONE
                 recyclerView.visibility = VISIBLE
             }
+        }
+    }
+
+    private fun onClickArticleTitle(): (URL) -> Unit {
+        return fun (url: URL) {
+            val intent = Intent(activity, ArticleActivity::class.java)
+            intent.putExtra(ArticleActivity.ARTICLE_URL, url.toString())
+
+            startActivity(intent)
         }
     }
 }
