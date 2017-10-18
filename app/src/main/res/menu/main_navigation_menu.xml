@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_item1"
+        android:id="@+id/action_show_teams"
         android:icon="@drawable/ic_format_list_bulleted_white_24dp"
         android:title="@string/item_1"/>
     <item
-        android:id="@+id/action_item2"
+        android:id="@+id/action_show_news"
         android:icon="@drawable/ic_assignment_white_24dp"
         android:title="@string/item_2"/>
 </menu>

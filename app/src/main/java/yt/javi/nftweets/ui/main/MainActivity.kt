@@ -1,6 +1,7 @@
 package yt.javi.nftweets.ui.main
 
 import android.os.Bundle
+import android.support.test.espresso.idling.CountingIdlingResource
 import android.support.v4.app.Fragment
 import android.support.v4.util.LruCache
 import android.support.v7.app.AppCompatActivity
@@ -22,6 +23,7 @@ import java.net.URL
 
 
 class MainActivity : AppCompatActivity() {
+    private val espressoTestIdlingResource = CountingIdlingResource("Network_Call")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,15 +47,16 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
             when (item.itemId) {
-                R.id.action_item1 -> selectedFragment = TeamListFragment()
-                R.id.action_item2 -> selectedFragment = NewsFragment(
+                R.id.action_show_teams -> selectedFragment = TeamListFragment()
+                R.id.action_show_news -> selectedFragment = NewsFragment(
                         GetLatestNewsService(
                                 ArticleHttpRepository(
                                         Parser(),
                                         HttpReader(LruCache(100))
                                 ),
                                 URL(BuildConfig.NEWS_API_URL)
-                        )
+                        ),
+                        espressoTestIdlingResource
                 )
 
             }
@@ -70,4 +73,6 @@ class MainActivity : AppCompatActivity() {
 
         main_toolbar.setTitle(R.string.app_name)
     }
+
+    fun getEspressoIdlingResource(): CountingIdlingResource = espressoTestIdlingResource
 }

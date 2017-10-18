@@ -14,8 +14,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="4dp">
+            android:layout_margin="4dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/article_title"
@@ -29,14 +29,14 @@
                 android:id="@+id/article_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Article description"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                tools:text="Article description" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/article_author"
