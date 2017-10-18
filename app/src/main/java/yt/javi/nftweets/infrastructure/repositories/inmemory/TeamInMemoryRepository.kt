@@ -1,4 +1,4 @@
-package yt.javi.nftweets.domain.infrastructure.repositories.inmemory
+package yt.javi.nftweets.infrastructure.repositories.inmemory
 
 import yt.javi.nfltweets.domain.model.team.Team
 import yt.javi.nftweets.domain.model.Conference

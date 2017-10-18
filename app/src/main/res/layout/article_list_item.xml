@@ -6,44 +6,53 @@
     android:layout_marginBottom="4dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/article_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:text="Article title" />
-
-    <TextView
-        android:id="@+id/article_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Article description" />
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="8dp">
 
-        <TextView
-            android:id="@+id/article_author"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Author"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" />
+            android:orientation="vertical"
+            android:layout_margin="4dp">
 
-        <TextView
-            android:id="@+id/article_published"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2017-10-04T16:11:00Z"/>
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Article title" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/article_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Article description"
+                android:layout_marginTop="8dp"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:src="@drawable/horizontal_shadow" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/article_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    tools:text="Author" />
+
+                <TextView
+                    android:id="@+id/article_published"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="2017-10-04T16:11:00Z" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

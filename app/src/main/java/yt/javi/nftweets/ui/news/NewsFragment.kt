@@ -2,12 +2,16 @@ package yt.javi.nftweets.ui.news
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock.sleep
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.news_list_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import yt.javi.nftweets.R
@@ -42,6 +46,10 @@ class NewsFragment() : Fragment() {
 
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = articleAdapter
+
+                sleep(500)
+                news_progressbar.visibility = GONE
+                recyclerView.visibility = VISIBLE
             }
         }
     }
