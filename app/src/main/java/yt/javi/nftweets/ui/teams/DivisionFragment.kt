@@ -9,11 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import yt.javi.nftweets.R
-import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
 import yt.javi.nftweets.domain.model.Conference
 import yt.javi.nftweets.domain.model.Conference.valueOf
 import yt.javi.nftweets.domain.service.team.GetTeamsByConferenceService
 import yt.javi.nftweets.ui.teams.TeamAdapter
+import yt.javi.nftweets.ui.twitter.TwitterTimeLineActivity
 
 
 class DivisionFragment : Fragment() {
@@ -53,7 +53,6 @@ class DivisionFragment : Fragment() {
                 valueOf(arguments.getString(CONFERENCES)),
                 onGoToTimelineClickListener()
         )
-        teamAdapter.setHasStableIds(true)
 
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = teamAdapter

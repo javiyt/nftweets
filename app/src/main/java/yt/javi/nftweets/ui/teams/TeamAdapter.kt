@@ -46,6 +46,4 @@ class TeamAdapter(private val getTeamsByConferenceService: GetTeamsByConferenceS
     }
 
     override fun getItemCount(): Int = getTeamsByConferenceService.getTeamsByConference(conference).size
-
-    override fun getItemId(position: Int): Long = position.toLong()
 }
