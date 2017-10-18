@@ -2,6 +2,7 @@ package yt.javi.nftweets.ui.main
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.util.LruCache
 import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
@@ -13,9 +14,9 @@ import com.twitter.sdk.android.core.TwitterConfig
 import kotlinx.android.synthetic.main.activity_main.*
 import yt.javi.nftweets.BuildConfig
 import yt.javi.nftweets.R
-import yt.javi.nftweets.domain.infrastructure.repositories.http.ArticleHttpRepository
-import yt.javi.nftweets.domain.infrastructure.repositories.http.HttpReader
 import yt.javi.nftweets.domain.service.news.GetLatestNewsService
+import yt.javi.nftweets.infrastructure.repositories.http.ArticleHttpRepository
+import yt.javi.nftweets.infrastructure.repositories.http.HttpReader
 import yt.javi.nftweets.ui.fragments.TeamListFragment
 import yt.javi.nftweets.ui.news.NewsFragment
 import java.net.URL
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         init {
             System.loadLibrary("keys")
         }
+
         val ALGORITHM = "AES"
     }
 
@@ -82,7 +84,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_item1 -> selectedFragment = TeamListFragment()
                 R.id.action_item2 -> selectedFragment = NewsFragment(
                         GetLatestNewsService(
-                                ArticleHttpRepository(Parser(), HttpReader()),
+                                ArticleHttpRepository(
+                                        Parser(),
+                                        HttpReader(LruCache(100))
+                                ),
                                 URL(BuildConfig.NEWS_API_URL + getNewsApiKey())
                         )
                 )
