@@ -5,10 +5,11 @@ import android.support.test.espresso.idling.CountingIdlingResource
 import android.support.v4.app.Fragment
 import android.support.v4.util.LruCache
 import android.support.v7.app.AppCompatActivity
+import android.util.Base64
 import android.util.Log
 import com.beust.klaxon.Parser
 import com.twitter.sdk.android.core.DefaultLogger
-import com.twitter.sdk.android.core.Twitter
+import com.twitter.sdk.android.core.Twitter.initialize
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,29 +21,65 @@ import yt.javi.nftweets.infrastructure.repositories.http.HttpReader
 import yt.javi.nftweets.ui.fragments.TeamListFragment
 import yt.javi.nftweets.ui.news.NewsFragment
 import java.net.URL
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
 
 class MainActivity : AppCompatActivity() {
-    private val espressoTestIdlingResource = CountingIdlingResource("Network_Call")
+    companion object {
+        init {
+            System.loadLibrary("keys")
+        }
+        val ALGORITHM = "AES"
+
+    }
+
+    private val espressoTestIdlingResource = CountingIdlingResource("CallToExternalApi")
+
+    private external fun getCryptedTwitterKey(): String
+
+    private external fun getCryptedTwitterSecret(): String
+
+    private external fun getCryptedNewsApiKey(): String
+
+    private external fun getEncryptionKey(): String
+
+    private fun getDecryptedString(encryptedText: String): String {
+        val key = SecretKeySpec(Base64.decode(getEncryptionKey().toByteArray(), Base64.DEFAULT), ALGORITHM)
+        val cipher = Cipher.getInstance(ALGORITHM)
+        cipher.init(Cipher.DECRYPT_MODE, key)
+
+        return String(cipher.doFinal(Base64.decode(encryptedText, Base64.DEFAULT)))
+    }
+
+    private fun getTwitterKey(): String =
+            getDecryptedString(getCryptedTwitterKey())
+
+    private fun getTwitterSecret(): String =
+            getDecryptedString(getCryptedTwitterSecret())
+
+
+    private fun getNewsApiKey(): String =
+            getDecryptedString(getCryptedNewsApiKey())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
 
-        Twitter.initialize(
+        initialize(
                 TwitterConfig.Builder(this)
                         .logger(DefaultLogger(Log.DEBUG))
                         .twitterAuthConfig(
                                 TwitterAuthConfig(
-                                        BuildConfig.TWITTER_CONSUMER_KEY,
-                                        BuildConfig.TWITTER_CONSUMER_SECRET
+                                        getTwitterKey(),
+                                        getTwitterSecret()
                                 )
                         )
                         .debug(true)
                         .build()
         )
-
 
         navigation.setOnNavigationItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
@@ -54,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                                         Parser(),
                                         HttpReader(LruCache(100))
                                 ),
-                                URL(BuildConfig.NEWS_API_URL)
+                                URL(BuildConfig.NEWS_API_URL + getNewsApiKey())
                         ),
                         espressoTestIdlingResource
                 )

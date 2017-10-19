@@ -8,6 +8,7 @@ import yt.javi.nftweets.domain.model.news.Article
 
 
 class ArticleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
     private val title = view.article_title
 
     private val description = view.article_description
