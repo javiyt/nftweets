@@ -26,6 +26,9 @@
         <activity
             android:name=".ui.article.ArticleActivity"
             android:screenOrientation="portrait" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="910d7823f5aee8bef9e4ef57056b5dc16ec9118a" />
     </application>
 
 </manifest>

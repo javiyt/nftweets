@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
 import com.beust.klaxon.Parser
+import com.crashlytics.android.Crashlytics
 import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter.initialize
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import yt.javi.nftweets.BuildConfig
 import yt.javi.nftweets.R
@@ -62,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Fabric.with(this, Crashlytics())
 
         setContentView(R.layout.activity_main)
 
