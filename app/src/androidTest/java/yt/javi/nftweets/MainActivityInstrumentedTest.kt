@@ -58,6 +58,18 @@ class MainActivityInstrumentedTest {
         assertRecyclerViewItemCount(R.id.news_list, 10)
     }
 
+    @Test
+    fun shouldBePossibleToGoToTeamsOfficalTwitterAccount() {
+        click("MiamiDolphins")
+        assertDisplayed("Miami Dolphins")
+    }
+
+    @Test
+    fun shouldBePossibleToGoToTeamsOfficalTwitterHashTag() {
+        click("FinsUp")
+        assertDisplayed("Miami Dolphins")
+    }
+
     private fun externalStubs() {
         stubFor(
                 get(urlPathEqualTo("/news"))
