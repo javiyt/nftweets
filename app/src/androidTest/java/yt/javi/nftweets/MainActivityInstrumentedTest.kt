@@ -3,11 +3,6 @@ package yt.javi.nftweets
 import android.support.test.espresso.IdlingRegistry
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import com.github.tomakehurst.wiremock.client.WireMock.aResponse
-import com.github.tomakehurst.wiremock.client.WireMock.get
-import com.github.tomakehurst.wiremock.client.WireMock.stubFor
-import com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo
-import com.github.tomakehurst.wiremock.junit.WireMockRule
 import com.schibsted.spain.barista.BaristaAssertions.assertDisplayed
 import com.schibsted.spain.barista.BaristaAssertions.assertRecyclerViewItemCount
 import com.schibsted.spain.barista.BaristaClickActions.click
@@ -25,9 +20,11 @@ class MainActivityInstrumentedTest {
     @JvmField
     var activityRule = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
+/*
     @Rule
     @JvmField
-    var wireMockRule = WireMockRule(9200)
+    var wireMockRule = WireMockRule(BuildConfig.PORT)
+*/
 
     @Test
     fun shouldShowTabsToSelectConferences() {
@@ -50,7 +47,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun shouldBePossibleToGoToNews() {
-        externalStubs()
+        /*externalStubs()*/
 
         IdlingRegistry.getInstance().register(activityRule.activity.getEspressoIdlingResource())
 
@@ -70,7 +67,7 @@ class MainActivityInstrumentedTest {
         assertDisplayed("Miami Dolphins")
     }
 
-    private fun externalStubs() {
+/*    private fun externalStubs() {
         stubFor(
                 get(urlPathEqualTo("/news"))
                         .willReturn(aResponse()
@@ -163,5 +160,5 @@ class MainActivityInstrumentedTest {
                                         "  ]\n" +
                                         "}"))
         )
-    }
+    }*/
 }
