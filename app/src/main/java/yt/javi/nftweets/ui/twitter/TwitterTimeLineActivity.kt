@@ -25,6 +25,7 @@ class TwitterTimeLineActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_twitter_time_line)
 
         val recyclerView = timeline_list
