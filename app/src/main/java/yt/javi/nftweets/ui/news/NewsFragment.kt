@@ -3,6 +3,7 @@ package yt.javi.nftweets.ui.news
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock.sleep
+import android.support.test.espresso.idling.CountingIdlingResource
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -20,13 +21,18 @@ import yt.javi.nftweets.ui.article.ArticleActivity
 import java.net.URL
 
 
+
+
 class NewsFragment() : Fragment() {
     private lateinit var getLatestNewsService: GetLatestNewsService
 
     private lateinit var recyclerView: RecyclerView
 
-    constructor(getLatestNewsService: GetLatestNewsService) : this() {
+    private lateinit var espressoTestIdlingResource: CountingIdlingResource
+
+    constructor(getLatestNewsService: GetLatestNewsService, espressoTestIdlingResource: CountingIdlingResource) : this() {
         this.getLatestNewsService = getLatestNewsService
+        this.espressoTestIdlingResource = espressoTestIdlingResource
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,8 +44,11 @@ class NewsFragment() : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        espressoTestIdlingResource.increment()
+
         doAsync {
             val news = getLatestNewsService.getLatestNews()
+
             uiThread {
                 val articleAdapter = ArticleAdapter(news, onClickArticleTitle())
 
@@ -49,6 +58,7 @@ class NewsFragment() : Fragment() {
                 sleep(500)
                 news_progressbar.visibility = GONE
                 recyclerView.visibility = VISIBLE
+                espressoTestIdlingResource.decrement()
             }
         }
     }

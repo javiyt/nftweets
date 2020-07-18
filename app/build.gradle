@@ -1,45 +1,72 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'jacoco'
 apply plugin: 'io.fabric'
+
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+
     defaultConfig {
         applicationId "yt.javi.nfltweets"
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
         buildConfigField "String", "NEWS_API_URL", '"https://newsapi.org/v1/articles?source=nfl-news&sortBy=latest&apiKey="'
+
         externalNativeBuild {
             ndkBuild {
                 cFlags "-DTWITTER_CONSUMER_KEY=" + project.TWITTER_CONSUMER_KEY_CRYPTED, "-DTWITTER_CONSUMER_SECRET=" + project.TWITTER_CONSUMER_SECRET_CRYPTED, "-DNEWS_API_KEY=" + project.NEWS_API_KEY_CRYPTED, "-DENCRYPTION_KEY=" + project.ENCRYPTION_KEY
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            def port = 9200
+            buildConfigField "Integer", "PORT", '' + port + ''
+            //buildConfigField "String", "NEWS_API_URL", '"http://localhost:' + port  + '/news?apiKey="'
+            testCoverageEnabled = false
+        }
     }
+
     externalNativeBuild {
         ndkBuild {
             path 'src/main/jni/Android.mk'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'LICENSE.txt'
+        exclude 'NOTICE'
+        exclude 'asm-license.txt'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'com.android.support:multidex:1.0.2'
 
     // Android extra libraries
     compile 'com.android.support:appcompat-v7:26.+'
@@ -71,9 +98,69 @@ dependencies {
     // Testing
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.+'
+
+    // Android testing
+    compile 'com.android.support.test.espresso:espresso-idling-resource:3.0.0'
+    androidTestCompile 'com.android.support:multidex-instrumentation:1.0.2'
+    androidTestCompile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    androidTestCompile('com.schibsted.spain:barista:1.7.0') {
+        exclude group: 'com.android.support'
+    }
+
+    // WireMock
+    compile("com.github.tomakehurst:wiremock:2.8.0") {
+        //Using Android Version Instead
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+
+        //Was getting a classpath conflict for org.objectweb.asm.AnnotationVisitor which is a part of 'net.minidev:asm'
+        exclude group: 'org.ow2.asm', module: 'asm'
+
+        //Was getting this warning, so decided to ignore this version included by WireMock.
+        //Warning:Dependency org.json:json:20090211 is ignored as it may be conflicting with the internal version provided by Android.
+        //In case of problem, please repackage with jarjar to change the class packages
+        exclude group: 'org.json', module: 'json'
+    }
+    androidTestCompile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
 }
 
 repositories {
     mavenCentral()
+    maven { url "https://maven.google.com" }
     maven { url 'https://maven.fabric.io/public' }
+}
+
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+
+def coverageSourceDirs = [
+        'src/main/java',
+]
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "build") {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+    classDirectories = fileTree(
+            dir: './build/intermediates/classes/debug',
+            excludes: ['**/R*.class',
+                       '**/*$InjectAdapter.class',
+                       '**/*$ModuleAdapter.class',
+                       '**/*$ViewInjector*.class'
+            ])
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = files("$buildDir/jacoco/testDebug.exec")
+    // Bit hacky but fixes https://code.google.com/p/android/issues/detail?id=69174.
+    // We iterate through the compiled .class tree and rename $$ to $.
+    doFirst {
+        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
+            if (file.name.contains('$$')) {
+                file.renameTo(file.path.replace('$$', '$'))
+            }
+        }
+    }
 }

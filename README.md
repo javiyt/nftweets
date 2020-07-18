@@ -1,4 +1,4 @@
-# NFTweets [![Build Status](https://travis-ci.org/javiyt/nftweets.svg?branch=master)](https://travis-ci.org/javiyt/nftweets)
+# NFTweets [![Build Status](https://travis-ci.org/javiyt/nftweets.svg?branch=master)](https://travis-ci.org/javiyt/nftweets) [![codecov](https://codecov.io/gh/javiyt/nftweets/branch/master/graph/badge.svg)](https://codecov.io/gh/javiyt/nftweets)
 App to learn kotlin + android
 
 ## How to run it

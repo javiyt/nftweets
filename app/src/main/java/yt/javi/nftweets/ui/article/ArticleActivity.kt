@@ -17,7 +17,7 @@ class ArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article)
 
-        val webview = findViewById(R.id.article_webview) as WebView
+        val webview = findViewById<WebView>(R.id.article_webview)
         webview.webChromeClient = WebChromeClient()
         webview.webViewClient = WebViewClient()
         webview.settings.javaScriptEnabled = true

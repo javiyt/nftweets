@@ -9,6 +9,9 @@ android:
   - extra-google-m2repository
   - extra-android-m2repository
   - addon-google_apis-google-25
+  - extra
+  - addon
+  - sys-img-armeabi-v7a-android-26
 licenses:
 - android-sdk-license-.+
 - .+
@@ -29,8 +32,14 @@ before_script:
   - export LOCAL_ANDROID_NDK_HOST_PLATFORM="linux-x86_64"
   - export PATH=$PATH:${ANDROID_NDK_HOME}
   - env
+  - echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
 script:
-- ./gradlew build
+- ./gradlew build jacocoTestReport
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
 env:
   global:
   - secure: dHgfatkY1Q0Sfhm+JHejrsKe6nWRzmcLZuSsHObKbBKmKWNaSDtpVL8q6QsOfeK0wCOVTWVp/vhNejajxcybGxE6zELfjR8EDOWwtJbvNY52ARxblWZPp6HhZk+jDMmqmLUfrQpZaF9dUDGxKmoWudl6PRivDQIK29bS/uQupRdz7HZWEr7uTPHQKbxRpeFFoL7KSNLgAUypxRnqA/3rZ1wHMnQDt0qONbDgpHLpICPjylQqIQBkY14UnPh/Tu0n5F9LOLqQquTINPg7Bt3lJzVD1fjZ95UehBU8vACST4P75WvuFJ2yiGAYpchs6P9ZEooFe1YzINEBlLm3ytvWfAnqeoSUD/+Dx0AYPkRSZyPg26f4qsqkalPCR/4Lr3oit0nKYqETY5+Rt+tvsqmSk73X/k+e7FN8D4FeUo4CCJsl5F+ReGwJzJP1hkTw43nx3BmopzqokDBq+Pbdb7RH8QkAS/ynhDzoeCDxqCx8CCTswVhrdYFQ+hnoHdmA78Ifw0wTVO9GToki4pF45zp3XJvL3oDGYho5myrqPGZfZtVTsaZDBrvjMAqsZMiEZ4FZlfLZkLXMC3PYLUbWWK4HARfWANAneIPaKk3hyA+NcRVDsY44W5jzmboCGMu8QdhhFmrqWrpMDFq55iHge+7k7pyTym5uIXo26pQvwuiNhZI=
